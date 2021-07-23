@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title th:text="'Helping Hands - ' + ${titulo}"></title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+<link rel="stylesheet" th:href="@{/css/style-layout.css}" />
+</head>
+<body>
+
+	<header th:fragment="header">
+		<nav id="menu">
+			<input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+            <ul>
+                <li><a th:href="@{/request/listar}">Home</a></li>
+                <li><a class='dropdown-arrow' href='http://'>Products</a>
+                    <ul class='sub-menus'>
+                        <li><a th:href="@{/request/listar}">View Products</a></li>
+                        <li><a th:href="@{/request/listar}">Create Products</a></li>
+                    </ul>
+                </li>
+                <li><a class='dropdown-arrow' href='http://'>ANR</a>
+                    <ul class='sub-menus'>
+                        <li><a th:href="@{/request/listar}">View ANR</a></li>
+                        <li><a th:href="@{/request/listar}">Create ANR</a></li>
+                    </ul>
+                </li>
+                <li><a class='dropdown-arrow' href='http://'>Requests</a>
+                    <ul class='sub-menus'>
+                        <li><a th:href="@{/request/listar}">View Request</a></li>
+                        <li><a th:href="@{/request/listar}">Create Request</a></li>
+                    </ul>
+                </li>
+                <li><a class='dropdown-arrow' href='http://'>Families</a>
+                    <ul class='sub-menus'>
+                        <li><a th:href="@{/request/listar}">View Families</a></li>
+                        <li><a th:href="@{/request/listar}">Create Family</a></li>
+                    </ul>
+                </li>
+                <li><a th:href="@{/request/listar}">Contact Us</a></li>
+                <li sec:authorize="!isAuthenticated()"><a class='dropdown-arrow' th:href="@{/login}">Sing In</a>
+                    <ul class='sub-menus'>
+                        <li><form id="logoutForm" th:action="@{/logout}" method="post">
+							<a class="dropdown-item"
+								onclick="document.getElementById('logoutForm').submit();"
+								type="submit">Sign Out</a>
+							<input type="hidden" th:name="${_csrf.parameterName}"
+								th:value="${_csrf.token}" />
+						</form></li>
+                    </ul>
+                </li>
+			</ul>
+		</nav>
+
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
+	</header>
+
+	<div class="container"></div>
+
+	<footer th:fragment="footer" class="footer">
+		<p>
+			Software Design and Development Project <span>&copy</span>
+			Application Helping Hands
+		</p>
+		<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery-ui.min.js}"></script>
+	</footer>
+</body>
+</html>

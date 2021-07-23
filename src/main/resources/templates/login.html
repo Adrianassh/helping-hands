@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <title>Log- 	in</title>
+</head>
+<body>
+  <header class="header">
+    <img class="header__img" th:src="@{/images/help-hands.png}" alt="help-hands logo">
+  </header>
+  <section class="login">
+      <section class="login__container">
+        <h2>Log in</h2>
+        <form class="login__container--form" th:action="@{/login}" method="post">
+          <input type="text" name="username" id="username"
+							class="input" placeholder="Username" autofocus required />
+          <input type="password" name="password" id="password"
+							class="input" placeholder="Password" required />
+		  <input type="submit" class="button" value="Log in" />
+          <div class="login__container--remember-me">
+            <label>
+              <input type="checkbox" name="" id="cbox1" value="checkbos">Remember me
+            </label>
+            <a href="#">Forgot my password</a>
+          </div>
+        </form>
+      </section>
+  </section>
+  <footer class="footer">
+    <p>Software Design and Development Project <span>&copy</span> Application Helping Hands</p>
+  </footer>
+</body>
+</html>
